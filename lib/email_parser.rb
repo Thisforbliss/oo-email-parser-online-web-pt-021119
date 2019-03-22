@@ -8,10 +8,13 @@ require 'pry'
 
 
 class EmailParser 
-  attr_accessor :email
+  attr_accessor :emails
   
-  def intialize(emails)
-  @email = emails
-  binding.pry
+  def initialize(emails)
+    @emails = emails
   end 
+  
+  def parse
+    @emails.split(/,| /).reject { |email| email.empty? }.uniq
+  end
 end
